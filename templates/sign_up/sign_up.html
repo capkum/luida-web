@@ -1,0 +1,11 @@
+{% extends 'layout/default.html' %}
+
+{% block title %} {{ data.title }} {% endblock %}
+
+{% block content %}
+가입 폼이
+<a href="{{url_for('sign_in.sign_in')}}">sign in</a>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
