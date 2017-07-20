@@ -1,0 +1,12 @@
+#signinbox {
+    margin-top: 50px;
+}
+
+#sns-btn {
+    border-top: 1px solid #999;
+    padding-top: 20px;
+}
+
+#form-btn > span{
+    margin: 0 8px;
+}
