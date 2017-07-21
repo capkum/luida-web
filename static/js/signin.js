@@ -1,7 +1,6 @@
-
 class Signin {
     constructor(api_url, signup_url) {
-        this.api_url = api_url;
+        this.api_url = api_url + "/login";
         this.signup_url = signup_url;
     }
 
@@ -12,7 +11,7 @@ class Signin {
     goSignin() {
         var email = $('#email').val();
         var passwd = $('#passwd').val();
-        
+
         if (!this.validateEmail(email)) {
             alert("Invalide Email");
             $('#email').focus();
@@ -34,6 +33,11 @@ class Signin {
             success: function (data) {
                 console.log(data);
                 console.log(data.status);
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
             }
         });
     }

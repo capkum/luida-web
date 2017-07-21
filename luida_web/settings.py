@@ -18,7 +18,7 @@ class Config(object):
 class DevelopmentConfig(Config):
     DEBUG = True
     TEMPLATES_AUTO_RELOAD = True
-    API_SERVER_URL = '127.0.0.1:5000'
+    API_SERVER_URL = 'http://127.0.0.1:5000'
     SERVER_NAME = '127.0.0.1:8000'
 
 
