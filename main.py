@@ -4,6 +4,7 @@ from flask import Flask
 from web_app.sign_in.views import signIn
 from web_app.sign_up.views import signUp
 from web_app.user_info.views import usrInfo
+from web_app.auth.views import auth
 
 app = Flask(__name__)
 app.config.from_object('luida_web.settings.DevelopmentConfig')
@@ -13,6 +14,7 @@ app.config.from_object('luida_web.settings.DevelopmentConfig')
 app.register_blueprint(signIn)
 app.register_blueprint(signUp)
 app.register_blueprint(usrInfo)
+app.register_blueprint(auth)
 
 
 # error handler

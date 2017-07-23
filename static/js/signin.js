@@ -30,17 +30,43 @@ class Signin {
             method: 'POST',
             dataType: 'JSON',
             data: $('form').serialize(),
-            success: function (data) {
-                console.log(data);
-                console.log(data.status);
-            },
-            error: function (xhr, status, error) {
-                console.log(xhr);
-                console.log(status);
-                console.log(error);
+            success: function (data, status, xhr) {
+                var objs = data;
+                objs['auth_tk'] = xhr.getResponseHeader('autho_tk');
+                signinAction(objs);
             }
         });
+
+        var signinAction = function (data) {
+            if (data.status == 200) {
+                var objs = data;
+                post_redirect(objs);
+            } else {
+                alert('이메일 비밀번호가 잘못되었습니다.');
+                return false;
+            }
+        }
+
+        var post_redirect = function (objs) {
+            $('#myForm').remove();
+            var form = document.createElement('form');
+            form.setAttribute("id", "myForm");
+            document.body.appendChild(form);
+
+            $.each(objs, function(k, v){
+                var input = document.createElement("INPUT");
+                input.setAttribute('type', 'hidden');
+                input.setAttribute('name', k);
+                input.setAttribute('value', v);
+                document.getElementById('myForm').appendChild(input);
+            });
+            form.method = 'POST';
+            form.action = '/auth';
+            form.submit();
+        }
+
     }
+
 
     validateEmail(email) {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
