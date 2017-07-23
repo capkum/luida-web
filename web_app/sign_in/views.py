@@ -10,4 +10,5 @@ def sign_in():
     data = {}
     data['title'] = 'SIGN IN'
     data['api_url'] = app.config['API_SERVER_URL']
+
     return render_template('sign_in/sign_in.html', data=data)

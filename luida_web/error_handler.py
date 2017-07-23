@@ -50,3 +50,13 @@ for error in TARGET_HTTP_ERROR_CODES:
 @app.errorhandler(404)
 def page_not_found(err):
     return render_template('err/404.html')
+
+
+@app.errorhandler(KeyError)
+def handle_db_internal_err(err):
+    error_response = jsonify(
+        status=500,
+        name='Unkown key error',
+        message=str(err)
+    )
+    return error_response

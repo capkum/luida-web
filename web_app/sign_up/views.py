@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from flask import render_template
+from flask import render_template, session, redirect
+from flask import url_for
 from .import signUp
 
 
@@ -8,4 +9,9 @@ from .import signUp
 def sign_up():
     data = {}
     data['title'] = 'SIGN_UP'
-    return render_template('sign_up/sign_up.html', data=data)
+
+    if 'auth_tk' in session:
+        return redirect(url_for('user_info.index'))
+
+    else:
+        return render_template('sign_up/sign_up.html', data=data)
