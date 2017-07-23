@@ -6,7 +6,7 @@ jquery ajax를 이용하여 luida api 서버와 통신 <br>
 
 # 사용된 주요 프로그램
 * python: 3.6.1
-* python module: [requirements.txt](https://github.com/capkum/luida-server/blob/master/requirements.txt) 참조
+* python module: [requirements.txt](https://github.com/capkum/luida-server/blob/master/requirements.txt) (reference)
 * jquery: 3.2.1
 * bootstrap: 3.3.7
 * api server: [link to luida server](https://github.com/capkum/luida-server)
