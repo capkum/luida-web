@@ -15,7 +15,7 @@ jquery ajax를 이용하여 luida api 서버와 통신 <br>
 api와 통신을 하기 위해서는 luida api server가 필요
 
 ```shell
-source virtualenv
+source virtualenv_path
 pip install -r requirements.txt
 python main.py
 ```
