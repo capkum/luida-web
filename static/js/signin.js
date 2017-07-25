@@ -1,3 +1,5 @@
+var success = 200;
+
 class Signin {
     constructor(api_url, signup_url) {
         this.api_url = api_url + "/login";
@@ -12,13 +14,13 @@ class Signin {
         var email = $('#email').val();
         var passwd = $('#passwd').val();
 
-        if (!this.validateEmail(email)) {
+        if (!validateEmail(email)) {
             alert("Invalide Email");
             $('#email').focus();
             return false;
         }
 
-        if (!this.validatePwd(passwd)) {
+        if (!validatePwd(passwd)) {
             alert("Invalide Password");
             $('#passwd').val('');
             $('#passwd').focus();
@@ -38,7 +40,7 @@ class Signin {
         });
 
         var signinAction = function (data) {
-            if (data.status == 200) {
+            if (data.status === success) {
                 var objs = data;
                 post_redirect(objs);
             } else {
@@ -65,23 +67,5 @@ class Signin {
             form.submit();
         }
 
-    }
-
-
-    validateEmail(email) {
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);
-    }
-
-    validatePwd(passwd) {
-        var reg_pwd = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
-
-        if (passwd.search(/₩s/) != -1) {
-            return false;
-        }
-        if (passwd.length < 8 || passwd.length > 20) {
-            return false;
-        }
-        return reg_pwd.test(passwd)
     }
 }
